@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marco teórico — Redes</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">← Redes</a>
+<div class="detail-head" style="border-color:#E8735C"><h2>Marco teórico</h2>
+  <p class="prof">Seguridad de la información y direccionamiento IPv4, con ejemplos de una red doméstica</p>
+</div>
+
+<div class="borrador"><p><strong>Borrador en revisión.</strong> La parte de seguridad se basa en los apuntes de la materia Seguridad Informática Básica (Dra. Cintia Quezada Reyes, Facultad de Ingeniería, UNAM), cuyo libro de texto es <em>Redes de datos seguras</em>.</p></div>
+
+<h3 class="parte" id="seguridad">Parte 1. Seguridad de la información</h3>
+
+<details class="section-block sec" id="conceptos" open><summary><span class="stitle">Conceptos base</span></summary>
+<p>La seguridad parte de seis conceptos encadenados: hay <strong>activos</strong> que proteger, <strong>amenazas</strong> que pueden dañarlos y <strong>vulnerabilidades</strong> que esas amenazas aprovechan. De su combinación sale el <strong>riesgo</strong>, que se mide por su <strong>impacto</strong> y se reduce con <strong>controles</strong>.</p>
+<div class="tabla-scroll"><table>
+<thead><tr><th>Concepto</th><th>Qué es</th><th>Pregunta guía</th><th>En una red doméstica</th></tr></thead>
+<tbody>
+<tr><td><strong>Activo</strong></td><td>Todo lo valioso que se quiere resguardar: información, hardware, software, instalaciones y personas</td><td>¿Qué quiero proteger?</td><td>Módem, switch, computadora, consola; archivos, fotos, credenciales</td></tr>
+<tr><td><strong>Amenaza</strong></td><td>Evento o circunstancia latente que puede dañar un activo; siempre está presente</td><td>¿Qué es lo malo que me podría pasar?</td><td>Alguien que captura el tráfico del Wi-Fi; una sobretensión que quema el módem</td></tr>
+<tr><td><strong>Vulnerabilidad</strong></td><td>Debilidad o falta de un control, que una amenaza puede explotar. No es una acción dañina en sí</td><td>¿De qué carezco? ¿Qué he omitido?</td><td>Contraseña de fábrica en el módem; equipos sin regulador ni no-break</td></tr>
+<tr><td><strong>Riesgo</strong></td><td>Probabilidad de que una amenaza aproveche una vulnerabilidad</td><td>¿Qué tan probable y qué tan grave?</td><td>Malware o robo de datos por un Wi-Fi mal cifrado</td></tr>
+<tr><td><strong>Impacto</strong></td><td>Magnitud del daño cuando el riesgo se materializa: parcial, total o catastrófico</td><td>¿Cuánto pierdo?</td><td>Perder el disco de la computadora sin respaldo</td></tr>
+<tr><td><strong>Control</strong></td><td>Medida lógica o física que elimina o mitiga una vulnerabilidad</td><td>¿Qué hago al respecto?</td><td>Cifrado WPA2/WPA3, contraseñas propias, no-break</td></tr>
+</tbody>
+</table></div>
+<p>El riesgo se expresa como:</p>
+<pre><code>Riesgo = Ocurrencia × Consecuencia</code></pre>
+<div class="simple">Explicado en simple: si llueve (amenaza) y no traes paraguas (vulnerabilidad), te mojas (riesgo). Que se moje tu ropa o tu computadora es el impacto, y el paraguas es el control. Sin amenaza o sin vulnerabilidad no hay riesgo: las dos tienen que coincidir.</div>
+</details>
+
+<details class="section-block sec" id="clasificaciones" open><summary><span class="stitle">Clasificación de amenazas y vulnerabilidades</span></summary>
+<p><strong>Amenazas</strong>, según cuatro criterios:</p>
+<ul>
+<li><strong>Por su origen:</strong> humanas, de hardware, de software, de red y desastres naturales.</li>
+<li><strong>Por el flujo de información:</strong> intercepción, interrupción, modificación y suplantación.</li>
+<li><strong>Por el objetivo:</strong> intencionadas o no intencionadas.</li>
+<li><strong>Por su ubicación:</strong> internas o externas.</li>
+</ul>
+<p><strong>Vulnerabilidades</strong>, en seis tipos: humanas, de hardware, de software, de red, naturales y físicas (de edificaciones). La fuente humana es el origen más frecuente, sobre todo por exceso de confianza.</p>
+</details>
+
+<details class="section-block sec" id="gestion" open><summary><span class="stitle">Gestión de riesgos: ciclo PHVA (PDCA)</span></summary>
+<p>Es un proceso continuo: identificar activos, evaluar amenazas y vulnerabilidades, medir los riesgos y aplicar controles hasta dejar el riesgo en un nivel aceptable. Sigue el ciclo de mejora continua:</p>
+<ul>
+<li><strong>Planear:</strong> identificar los activos y diseñar el esquema de seguridad. <em>En casa: hacer el inventario de equipos y servicios.</em></li>
+<li><strong>Hacer:</strong> implementar los controles e instruir a los usuarios. <em>En casa: cifrado, contraseñas, firmware, red de invitados.</em></li>
+<li><strong>Verificar:</strong> monitorear, probar y auditar. <em>En casa: revisar cada cierto tiempo los equipos conectados al módem.</em></li>
+<li><strong>Actuar:</strong> corregir y ajustar el plan. <em>En casa: sacar equipos desconocidos y actualizar el inventario.</em></li>
+</ul>
+</details>
+
+<details class="section-block sec" id="servicios" open><summary><span class="stitle">Los seis servicios de seguridad</span></summary>
+<div class="tabla-scroll"><table>
+<thead><tr><th>Servicio</th><th>Qué garantiza</th><th>En una red doméstica</th></tr></thead>
+<tbody>
+<tr><td><strong>Confidencialidad</strong></td><td>Que solo accedan entidades autorizadas</td><td>Wi-Fi cifrado con WPA2/WPA3</td></tr>
+<tr><td><strong>Integridad</strong></td><td>Que nada se modifique sin autorización, ni en contenido ni en formato</td><td>Firmware solo desde la app o el sitio oficial del fabricante</td></tr>
+<tr><td><strong>Disponibilidad</strong></td><td>Acceso continuo cuando se necesita; hay que diseñarla a propósito</td><td>Módem y switch conectados a un no-break</td></tr>
+<tr><td><strong>Control de acceso</strong></td><td>Quién o qué puede entrar a cada recurso</td><td>Red de invitados separada para visitas y dispositivos IoT</td></tr>
+<tr><td><strong>Autenticación</strong></td><td>Verificar la identidad con algo que sabes, algo que tienes o algo que eres</td><td>Contraseña de administración única en el módem</td></tr>
+<tr><td><strong>No repudio</strong></td><td>Que nadie pueda negar una acción que hizo</td><td>Bitácora del módem con la MAC y la hora de cada conexión</td></tr>
+</tbody>
+</table></div>
+</details>
+
+<details class="section-block sec" id="normatividad" open><summary><span class="stitle">Normatividad</span></summary>
+<ul>
+<li><strong>NOM vs. NMX:</strong> en México, las Normas Oficiales Mexicanas (NOM) son obligatorias. Las Normas Mexicanas (NMX) y los estándares internacionales son voluntarios, salvo que una ley o un contrato los exija.</li>
+<li><strong>ISO/IEC 27001:</strong> norma certificable para crear un Sistema de Gestión de Seguridad de la Información (SGSI) basado en riesgos.</li>
+<li><strong>ISO/IEC 27002:</strong> guía de buenas prácticas con 93 controles en cuatro categorías: organizacionales, humanos, físicos y tecnológicos.</li>
+<li><strong>Common Criteria (ISO/IEC 15408):</strong> evalúa la seguridad de productos de TI (routers, switches, firewalls) con niveles de garantía EAL1 a EAL7.</li>
+<li><strong>LFPDPPP:</strong> la Ley Federal de Protección de Datos Personales en Posesión de los Particulares obliga a proteger los datos personales que se manejan en sistemas.</li>
+</ul>
+</details>
+
+<details class="section-block sec" id="practica" open><summary><span class="stitle">De la teoría a la práctica</span></summary>
+<p>Algunos controles que aparecen en los ejemplos de manual ayudan poco en una casa:</p>
+<ul>
+<li><strong>Filtro por MAC:</strong> una MAC se puede falsificar en segundos, y muchos celulares la cambian solos (direcciones privadas o aleatorias). Una contraseña larga con WPA2/WPA3 protege mucho más.</li>
+<li><strong>Common Criteria:</strong> los routers y switches de casa casi nunca están certificados. Es más útil elegir marcas que publiquen actualizaciones de firmware durante varios años.</li>
+<li><strong>No repudio:</strong> la bitácora del módem del proveedor suele ser corta y se borra al reiniciar. Sirve como pista, no como prueba.</li>
+</ul>
+</details>
+
+<h3 class="parte" id="direccionamiento">Parte 2. Direccionamiento IPv4</h3>
+
+<details class="section-block sec" id="clases" open><summary><span class="stitle">Clases de redes (classful)</span></summary>
+<p>El diseño original de IPv4 dividía el espacio de 32 bits en cinco clases, según los primeros bits del primer octeto. La clase decidía cuántos bits eran de red y cuántos de equipo.</p>
+<div class="tabla-scroll"><table>
+<thead><tr><th>Clase</th><th>Primeros bits</th><th>Primer octeto</th><th>Máscara por defecto</th><th>Equipos por red</th><th>Uso</th></tr></thead>
+<tbody>
+<tr><td>A</td><td>0</td><td>1–126</td><td>/8 (255.0.0.0)</td><td>16,777,214</td><td>Redes enormes</td></tr>
+<tr><td>B</td><td>10</td><td>128–191</td><td>/16 (255.255.0.0)</td><td>65,534</td><td>Universidades, empresas grandes</td></tr>
+<tr><td>C</td><td>110</td><td>192–223</td><td>/24 (255.255.255.0)</td><td>254</td><td>Redes pequeñas</td></tr>
+<tr><td>D</td><td>1110</td><td>224–239</td><td>—</td><td>—</td><td>Multicast</td></tr>
+<tr><td>E</td><td>1111</td><td>240–255</td><td>—</td><td>—</td><td>Experimental</td></tr>
+</tbody>
+</table></div>
+<p>127.0.0.0/8 es <em>loopback</em> (el propio equipo) y 0.0.0.0/8 está reservado.</p>
+<p><strong>De las clases a CIDR.</strong> Las clases desperdiciaban direcciones: una organización que necesitaba 2,000 equipos no cabía en una C (254) y recibía una B (65,534). Desde 1993 se usa CIDR (<em>Classless Inter-Domain Routing</em>): el prefijo /n puede tener cualquier valor, sin importar la clase. Hoy las clases se usan como vocabulario, no como regla.</p>
+<p><strong>Rangos privados (RFC 1918).</strong> No se enrutan en Internet y se comparten mediante NAT:</p>
+<ul>
+<li>10.0.0.0/8</li>
+<li>172.16.0.0/12</li>
+<li>192.168.0.0/16 (el de casi todas las casas)</li>
+</ul>
+<p>Además, 100.64.0.0/10 (RFC 6598) es el espacio que usan los proveedores para CGNAT, cuando varios clientes comparten una misma IP pública.</p>
+</details>
+
+<details class="section-block sec" id="mascara" open><summary><span class="stitle">Máscara, notación CIDR y broadcast</span></summary>
+<p>La máscara de red es un número de 32 bits que separa la parte de red de la parte de equipo: los bits en 1 son de red y los bits en 0 son de equipo. La notación /24 solo cuenta cuántos unos hay.</p>
+<pre><code>/24  →  11111111.11111111.11111111.00000000  =  255.255.255.0</code></pre>
+<p><strong>Por qué /24 es la más común.</strong> Coincide con el límite del tercer octeto, así que se lee a simple vista: los tres primeros números identifican la red y el último al equipo. Da 254 equipos, de sobra para una casa u oficina, y por eso los routers domésticos la traen de fábrica.</p>
+<p><strong>Ejemplo con la IP 192.168.1.37/24:</strong></p>
+<ul>
+<li><strong>Dirección de red</strong> = IP AND máscara = 192.168.1.0. Todos los bits de equipo en 0; identifica a la red y no se asigna.</li>
+<li><strong>Broadcast</strong> = todos los bits de equipo en 1 = 192.168.1.255. Lo reciben todos los equipos de la red; tampoco se asigna.</li>
+<li><strong>Equipos válidos:</strong> de 192.168.1.1 a 192.168.1.254, es decir 2<sup>(32−n)</sup> − 2 = 254. Normalmente .1 es el router.</li>
+</ul>
+<div class="tabla-scroll"><table>
+<thead><tr><th>Prefijo</th><th>Máscara</th><th>Equipos útiles</th><th>Broadcast (red 192.168.1.0)</th></tr></thead>
+<tbody>
+<tr><td>/24</td><td>255.255.255.0</td><td>254</td><td>192.168.1.255</td></tr>
+<tr><td>/25</td><td>255.255.255.128</td><td>126</td><td>192.168.1.127</td></tr>
+<tr><td>/26</td><td>255.255.255.192</td><td>62</td><td>192.168.1.63</td></tr>
+<tr><td>/27</td><td>255.255.255.224</td><td>30</td><td>192.168.1.31</td></tr>
+<tr><td>/30</td><td>255.255.255.252</td><td>2</td><td>192.168.1.3</td></tr>
+</tbody>
+</table></div>
+<p>Un /30 sirve para enlaces punto a punto entre dos routers; un /32 identifica a un solo equipo.</p>
+</details>
+
+<details class="section-block sec" id="unam" open><summary><span class="stitle">Por qué la red de la UNAM empieza con 132</span></summary>
+<p>La UNAM recibió el bloque 132.248.0.0/16 cuando se conectó a Internet en 1989. El 132 cae en el rango de la clase B (128–191), así que el bloque tiene 65,534 direcciones útiles. No hay una razón técnica especial para el número: en esa época los registros asignaban bloques clase B a las instituciones grandes conforme los pedían.</p>
+<p><strong>Datos históricos</strong> (según las fuentes de abajo; por verificar en las páginas completas):</p>
+<ul>
+<li>El 20 de julio de 1989 la UNAM hizo su primera conexión a Internet: una antena parabólica en el Instituto de Astronomía se enlazó por el satélite Morelos I con el NCAR en Boulder, Colorado.</li>
+<li>La primera computadora en México con TCP/IP fue alfa.astroscu.unam.mx, con la IP 132.248.1.1.</li>
+<li>El Tec de Monterrey (ITESM) recibió el bloque 131.178.0.0/16, también clase B, en la misma época.</li>
+<li>RedUNAM (Red Integral de Telecomunicaciones) se inauguró en 1992.</li>
+</ul>
+<p>Que las IP de la UNAM sigan siendo 132.248.x.x tiene una consecuencia práctica: ese bloque es <strong>público y enrutable</strong>, a diferencia del 192.168.x.x de una casa. Para consultar quién administra un bloque se usa <code>whois 132.248.0.0</code> o el registro de LACNIC.</p>
+<p>En la Facultad de Ingeniería, la <a href="https://www.ingenieria.unam.mx/sgeneral/unica/funciones.php" style="color:var(--indigo)">Unidad de Servicios de Cómputo Académico (UNICA)</a> monitorea la red de datos y administra el uso de direcciones IP. La división interna en subredes no es pública, y es normal: publicar la topología de una red sería un riesgo de seguridad.</p>
+</details>
+
+<details class="section-block sec contexto" id="fuentes"><summary><span class="stitle">Fuentes</span></summary>
+<ul>
+<li>Apuntes de Seguridad Informática Básica, Dra. Cintia Quezada Reyes, Facultad de Ingeniería, UNAM (semestre 2027-1).</li>
+<li><a href="https://es.wikipedia.org/wiki/Internet_en_M%C3%A9xico" style="color:var(--indigo)">Internet en México (Wikipedia)</a></li>
+<li><a href="https://www.revista.unam.mx/vol.4/num4/art7/ago_art7.pdf" style="color:var(--indigo)">Cómo se conectó México a Internet (Revista Digital Universitaria, UNAM)</a></li>
+<li><a href="https://www.excelsior.com.mx/hacker/se-cumplen-30-anos-de-la-primera-conexion-a-internet-en-mexico/1325160" style="color:var(--indigo)">30 años de la primera conexión a Internet en México (Excélsior)</a></li>
+<li><a href="https://isoc.mx/la-historia/" style="color:var(--indigo)">Historia de Internet en México (ISOC México)</a></li>
+<li>RFC 1918 (direcciones privadas) y RFC 6598 (espacio compartido para CGNAT).</li>
+</ul>
+</details>
+</div>
+</body>
+</html>
